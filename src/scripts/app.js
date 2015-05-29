@@ -1,3 +1,3 @@
-/// <reference path="angular-1.3.15/angular.js" />
+///</// <reference path="../typings/angularjs/angular.d.ts" />
 
 var myApp = angular.module("myApp", []);
