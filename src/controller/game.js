@@ -1,12 +1,12 @@
 /// <reference path="../typings/jquery/jquery.d.ts"/>
 /// <reference path="../scripts/app.js" />
- 
+
 
 myApp.controller('myController', ['$scope', function ($scope) {
 	var _self = this;
 
 	$scope.getFile = function () {
-		$.get('resources/items.txt')
+		$.get('file:///C:/_git/Dota2ItemGame/src/resources/items.txt')
 			.success(function (data) {
 			var regex1 = /\/\/[^\n]*\n/g;
 			var regex2 = /"[ \t]+"/g;
@@ -31,10 +31,10 @@ myApp.controller('myController', ['$scope', function ($scope) {
 	};
 
 	$scope.getItemsApi = function (key) {
-		$.get('resources/items_webapi.json')
+		$.get('file:///C:/_git/Dota2ItemGame/src/resources/items_webapi.json')
 			.success(function(data){
-				console.log('teste');
-				console.log(data);
+				var json = JSON.parse(data);
+				console.log(json);
 			});
 	};
 
