@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quiz de Itens</title>
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<link href="http://www.dota2.com/public/css/global.css?v=b2795637" rel="stylesheet" type="text/css">
+		<link href="http://www.dota2.com/public/css/global_english.css?v=BpCw4C6e29Gp" rel="stylesheet" type="text/css">
+		<link href="http://www.dota2.com/public/css/publicheader.css?v=cynYJyIFSnLW" rel="stylesheet" type="text/css">
+		<link href="http://www.dota2.com/public/css/quiz.css?v=HlppmluuPu3U" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="http://cdn.dota2.com/apps/dota2/javascript/static/jquery-1.7.1.min.js?v=2795637"></script>
+		<script type="text/javascript">
+			$J = jQuery;
+		</script>
+		<script type="text/javascript" src="http://cdn.steamcommunity.com/public/shared/javascript/shared_global.js?v=b2795637&amp;l=portuguese"></script>
+		<script type="text/javascript" src="scripts/quiz.js?v=b2795637&amp;l=portuguese"></script>
+		<script type="text/javascript" src="http://cdn.dota2.com/apps/dota2/javascript/static/jquery-ui-1.9.2.custom.min.js?v=2795637"></script>
+		<style>
+			#bodyContainer {
+				height: 1100px;
+				width: 1200px;
+				background: url('http://cdn.dota2.com/apps/dota2/images/quiz/bg_quiz.jpg') top center no-repeat;
+			}
+			
+			#mainContent {
+				position: relative;
+				top: 425px;
+			}
+			
+			body {
+				overflow: scroll;
+			}
+		</style>
+		<script language="javascript">
+			var g_Embedded = false
+			// -----------------------------------------------------------------------
+			// Handle document start up
+			// -----------------------------------------------------------------------
+			$(document).ready( function() {
+				// Start loading our metadata from the site
+				if ( !loadDotaMetadata() ) {
+					return;
+				} 
+		
+				var frameWidth = $('#bodyContent').width();
+				var frameHeight = $('#bodyContent').height();
+		
+				$('#spinner').css({
+					top: $('#bodyContent').position().top + (frameHeight/2)-16,
+					left: $('#bodyContent').position().left + (frameWidth/2)-16,
+					position: "absolute"
+				});
+		
+				// Hide everything!
+				$('#bodyContent').hide();
+			});
+		</script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-33822635-2']);
+			_gaq.push(['_setSampleRate', '1']);		_gaq.push(['_setDomainName', 'dota2.com']);
+			_gaq.push(['_trackPageview']);
+	
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+		<center>
+			<!-- header bar -->
+			<div id="navBarBGRepeat">
+				<div id="navBarShadow"></div>
+				<div id="navBarBG">
+					<div id="navBar">
+						<div id="navLoginAndLanguage">
+							<a href="https://steamcommunity.com/oauth/login?client_id=9B2C1229&response_type=token&state=quiz%3Fl%3Dportuguese">Iniciar Sessão</a>&nbsp;|&nbsp;&nbsp;
+							<div id="languageSelector">
+								<a href="javascript:void(0)">Idioma</a>
+								<img style="padding-bottom: 2px;" src="http://cdn.dota2.com/apps/dota2/images/header/btn_arrow_down.png" width="9" height="4"
+								border="0" />
+								<br />
+								<div style="display:none;" id="languageList">
+									<a class="languageItem" href="?l=brazilian">Português (Brasil)</a>
+									<a class="languageItem" href="?l=bulgarian">български (Búlgaro)</a>
+									<a class="languageItem" href="?l=czech">čeština (Checo)</a>
+									<a class="languageItem" href="?l=danish">Dansk (Dinamarquês)</a>
+									<a class="languageItem" href="?l=dutch">Nederlands (Holandês)</a>
+									<a class="languageItem" href="?l=english">English (Inglês)</a>
+									<a class="languageItem" href="?l=finnish">Suomi (Finlandês)</a>
+									<a class="languageItem" href="?l=french">Français (Francês)</a>
+									<a class="languageItem" href="?l=german">Deutsch (Alemão)</a>
+									<a class="languageItem" href="?l=greek">Ελληνικά (Grego)</a>
+									<a class="languageItem" href="?l=hungarian">Magyar (Húngaro)</a>
+									<a class="languageItem" href="?l=italian">Italiano (Italiano)</a>
+									<a class="languageItem" href="?l=japanese">日本語 (Japonês)</a>
+									<a class="languageItem" href="?l=koreana">한국어 (Coreano)</a>
+									<a class="languageItem" href="?l=norwegian">Norsk (Norueguês)</a>
+									<a class="languageItem" href="?l=polish">Polski (Polaco)</a>
+									<a class="languageItem" href="?l=russian">Русский (Russo)</a>
+									<a class="languageItem" href="?l=romanian">Română (Romeno)</a>
+									<a class="languageItem" href="?l=schinese">简体中文 (Chinês Simplificado)</a>
+									<a class="languageItem" href="?l=spanish">Español (Espanhol)</a>
+									<a class="languageItem" href="?l=swedish">Svenska (Sueco)</a>
+									<a class="languageItem" href="?l=tchinese">繁體中文 (Chinês Tradicional)</a>
+									<a class="languageItem" href="?l=thai">ไทย (Tailandês)</a>
+									<a class="languageItem" href="?l=turkish">Türkçe (Turco)</a>
+									<a class="languageItem" href="?l=ukrainian">Українська (Ucraniano)</a>
+								</div>
+							</div>
+						</div>
+						<span class="navItem">
+							<a class="navBarItem" href="http://blog.dota2.com/">
+							<img border="0" class="top" src="http://cdn.dota2.com/apps/dota2/images/nav/en_dota_logo_over.png"/>
+							<img border="0" class="bottom" src="http://cdn.dota2.com/apps/dota2/images/nav/en_dota_logo.png"/>
+						</a>
+						</span>
+						<span class="navItem">
+							<a class="navBarItem" href="http://www.dota2.com/store/">Loja</a>
+						</span>
+						<span class="navItem">
+							<a class="navBarItem" href="javascript:void(0)">Heroipédia</a>
+							<div style="display:none;" class="menuSubItemList">
+								<a href="http://www.dota2.com/heroes/">Heróis</a>
+								<a href="http://www.dota2.com/items/">Explorador de Itens</a>
+								<a href="http://www.dota2.com/workshop/builds">Builds</a>
+								<a href="http://steamcommunity.com/app/570/guides" target="_blank">Guias Steam</a>
+								<a href="http://www.dota2.com/quiz">O Quiz do Comerciante</a>
+							</div>
+							<img class="dn_arrow" src="http://cdn.dota2.com/apps/dota2/images/nav/arrow.png" />
+						</span>
+						<span class="navItem">
+							<a class="navBarItem" href="http://steamcommunity.com/workshop/dota2/" target="_blank">Workshop</a>
+							<div class="external_img">
+								<img src="http://cdn.dota2.com/apps/dota2/images/trans.gif" width="10" height="8" border="0" />
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<script language="javascript">
+				function MM_preloadImages() { //v3.0
+				  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+					var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+					if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+				}
+			
+				function PreloadHeaderImages()
+				{
+					//  Preload header rollover images
+					MM_preloadImages(
+						'http://cdn.dota2.com/apps/dota2/images/nav/en_dota_logo_over.png'
+					);
+				}
+			
+						if ( document.addEventListener ) {
+					document.addEventListener( "DOMContentLoaded", PreloadHeaderImages, false );
+				} else if ( document.attachEvent ) {
+					document.attachEvent( 'onDomContentLoaded', PreloadHeaderImages );
+				}
+			</script>
+			<script language="javascript">
+				function closeSubMenu( target ) {
+					$(target).find('.dn_arrow').attr( "src", "http://cdn.dota2.com/apps/dota2/images/nav/arrow.png" );
+					$(target).find('.menuSubItemList').hide();
+				}
+		
+				function closeAllSubMenus() {
+					$('.navItem').each( function() {
+						closeSubMenu( $(this) );
+					});
+				}
+		
+				function openSubMenu( target ) {
+					closeAllSubMenus();
+		
+					$(target).find('.dn_arrow').attr( "src", "http://cdn.dota2.com/apps/dota2/images/nav/arrow_over.png" );
+		
+					// Show the sub-menu
+					var subItemList = $(target).find('.menuSubItemList');
+					if ( subItemList.length ) {
+						var itemTop = $(target).position().top + $(target).outerHeight();
+						var itemLeft = $(target).position().left;
+						subItemList
+							.css({
+								"top": itemTop,
+								"left": itemLeft
+							})
+							.fadeIn( 'fast' );
+					}
+				}
+		
+				$(document).ready( function () {
+					// Deal with the nav bars
+					$('.navItem').each( function() {
+						$(this).hover( function () {
+							$(this)
+								.find('a.navBarItem img.top')
+								.animate({
+									"opacity": 1
+								}, 100 );
+							if ( $(this).find('.menuSubItemList').length !== 0 ) {
+								openSubMenu( this );
+							}
+						},
+						function () {
+							$(this)
+							.find('a.navBarItem img.top')
+							.animate({
+								"opacity": 0
+							}, 100 );
+							if ( $(this).find('.menuSubItemList').length !== 0 ) {
+								closeSubMenu(this);
+							}
+						}
+						);
+					});
+		
+					// Deal with header drop-downs
+					var strMenus = '#languageSelector';
+					
+					$(strMenus).each( function() {
+						$(this).hover( function () {
+							//show its submenu
+							$( this ).find( 'div' ).fadeIn( 'fast' );
+						},
+						function () {
+							//hide its submenu
+							$( this ).find( 'div' ).hide();
+						}
+						);
+					});
+				});
+			</script>
+			<!-- /header bar -->
+			<div id="bodyContainer">
+				<div id="mainContent">
+					<div id="blackoutCurtain"></div>
+					<div id="spinner">
+						<img src="http://cdn.dota2.com/apps/dota2/images/throbber.gif" />
+					</div>
+					<div id="bodyContent">
+						<div id="targetItem" class="itemSection">
+							<div class="item"></div>
+						</div>
+						<br clear="both" />
+						<div id="recipeItems" class="itemSection"></div>
+						<br clear="both" />
+						<div id="sourceItems" class="itemSection"></div>
+						<div id="recipeItem" class="itemSection"></div>
+						<br clear="both" />
+						<div id="textArea" class="itemSection">
+							<h2 id="guessesText">Tentativas restantes:
+								<span id="guesses"></span>
+							</h2>
+							<h2>Pontos:
+								<span id="score">0</span>
+							</h2>
+							<p id="streakText">
+								<span id="streak">0</span>&nbsp;de seguida</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</center>
+	</body>
+
+</html>
